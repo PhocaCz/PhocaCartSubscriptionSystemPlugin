@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<updates>
+	<update>
+		<name><![CDATA[ Phoca Cart Subscription System Plugin ]]></name>
+		<description><![CDATA[ Phoca Cart Subscription System Plugin - subscription system plugin for Phoca Cart. ]]></description>
+		<element>phocacartsubscription</element>
+		<folder>system</folder>
+		<type>plugin</type>
+		<version>6.2.0</version>
+		<infourl title="Phoca Cart Subscription System Plugin 6.2.0">https://www.phoca.cz/</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaCartSubscriptionSystemPlugin/releases/download/6.2.0/plg_system_phocacartsubscription_v6.2.0.zip</downloadurl>
+		</downloads>
+		<sha512>573074c20a690323fce01dec04bce7314cea698f96020b1aa4d6bcca596d3a10ea1ca851f66e0661ab009d5fd43e075436a1b386347e9fa36940310939ce0e37</sha512>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer><![CDATA[ Phoca.cz ]]></maintainer>
+		<maintainerurl>https://www.phoca.cz/</maintainerurl>
+		<section>Updates</section>
+		<targetplatform name="joomla" version="6\.*"/>
+		<client>site</client>
+	</update>
+</updates>

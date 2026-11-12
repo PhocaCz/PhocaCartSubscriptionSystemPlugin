@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade" version="6.0">
+	<name>plg_system_phocacartsubscription</name>
+	<author>Jan Pavelka (www.phoca.cz)</author>
+	<creationDate>12/11/2026</creationDate>
+	<authorEmail></authorEmail>
+	<authorUrl>https://www.phoca.cz</authorUrl>
+	<copyright>Jan Pavelka</copyright>
+	<license>GNU/GPL</license>
+	<version>6.2.0</version>
+	<description>PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DESCRIPTION</description>
+	<namespace path="src">Joomla\Plugin\System\Phocacartsubscription</namespace>
+	<projectName>PhocaCartSubscriptionSystemPlugin</projectName>
+
+	<files>
+		<folder>src</folder>
+		<folder plugin="phocacartsubscription">services</folder>
+		<filename plugin="phocacartsubscription">FOSS.md</filename>
+		<filename plugin="phocacartsubscription">LICENSE</filename>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_phocacartsubscription.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_phocacartsubscription.sys.ini</language>
+	</languages>
+
+	<administration>
+		<languages>
+			<language tag="en-GB">language/en-GB/en-GB.plg_system_phocacartsubscription.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.plg_system_phocacartsubscription.sys.ini</language>
+		</languages>
+	</administration>
+	
+	<config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/administrator/components/com_phocacart/models/fields">
+                <field name="activation_status" type="PhocacartOrderstatus" layout="joomla.form.field.list-fancy-select" multiple="true" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_ACTIVATION_STATUS_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_ACTIVATION_STATUS_DESC" default="0"/>
+                <field name="deactivation_status" type="PhocacartOrderstatus" layout="joomla.form.field.list-fancy-select" multiple="true" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DEACTIVATION_STATUS_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DEACTIVATION_STATUS_DESC" default="0"/>
+
+
+				<field name="subscription_renewal_mode" type="list" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_RENEWAL_MODE_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_RENEWAL_MODE_DESC" default="1">
+    <option value="0">PLG_SYSTEM_PHOCACARTSUBSCRIPTION_RENEWAL_MODE_FROM_NOW</option>
+    <option value="1">PLG_SYSTEM_PHOCACARTSUBSCRIPTION_RENEWAL_MODE_APPEND</option>
+</field>
+
+				<field name="subscription_display_period_price" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DISPLAY_SUBSCRIPTION_PERIOD_PRICE_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DISPLAY_SUBSCRIPTION_PERIOD_PRICE_DESC" default="0">
+    <option value="0">JNO</option>
+    <option value="1">JYES</option>
+</field>
+
+                <field name="subscription_potentional_display_period_price" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DISPLAY_POTENTIONAL_SUBSCRIPTION_PERIOD_PRICE_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DISPLAY_POTENTIONAL_SUBSCRIPTION_PERIOD_PRICE_DESC" default="0">
+    <option value="0">JNO</option>
+    <option value="1">JYES</option>
+</field>
+
+                <field name="subscription_current_display_period_price" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DISPLAY_CURRENT_SUBSCRIPTION_PERIOD_PRICE_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_DISPLAY_CURRENT_SUBSCRIPTION_PERIOD_PRICE_DESC" default="0">
+    <option value="0">JNO</option>
+    <option value="1">JYES</option>
+</field>
+
+
+
+                <field name="charge_expired_signup_fee" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_CHARGE_EXPIRED_SIGNUP_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_CHARGE_EXPIRED_SIGNUP_DESC" default="0" class="btn-group">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="notification_days_before" type="number" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_NOTIFICATION_DAYS_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_NOTIFICATION_DAYS_DESC" default="7" min="1" max="90"/>
+
+				<field name="subscription_description_account_view" type="editor" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_SUBSCRIPTION_DESCRIPTION_ACCOUNT_VIEW_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_SUBSCRIPTION_DESCRIPTION_ACCOUNT_VIEW_DESC" filter="safehtml"/>
+            </fieldset>
+
+            <fieldset name="email" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_FIELDSET_EMAIL">
+                <field name="email_activated" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_ACTIVATED_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_ACTIVATED_DESC" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="email_renewed" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_RENEWED_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_RENEWED_DESC" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="email_expiring_soon" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_EXPIRING_SOON_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_EXPIRING_SOON_DESC" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="email_expired" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_EXPIRED_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_EXPIRED_DESC" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="email_canceled" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_CANCELED_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_CANCELED_DESC" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="email_status_changed" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_STATUS_CHANGED_LABEL" description="PLG_SYSTEM_PHOCACARTSUBSCRIPTION_EMAIL_STATUS_CHANGED_DESC" default="0">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+
+	<updateservers>
+		<server type="extension" name="PLG_SYSTEM_PHOCACARTSUBSCRIPTION" priority="1"><![CDATA[https://raw.githubusercontent.com/PhocaCz/PhocaCartSubscriptionSystemPlugin/main/manifest.xml]]></server>
+	</updateservers>
+</extension>
